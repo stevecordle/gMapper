@@ -1,6 +1,8 @@
 ;(function($) {
 	$.fn.gMapper = function(options) {
 		
+		var dataOptions = $(this).data();
+		
 		var mapTypes = {
 			"ROADMAP": google.maps.MapTypeId.ROADMAP,
 			"SATELLITE": google.maps.MapTypeId.SATELLITE,
@@ -8,12 +10,30 @@
 			"TERRAIN": google.maps.MapTypeId.TERRAIN
 		};
 		
-		var controls = {
-			panControl: true,
-			zoomControl: true,
-			scaleControl: true,
-			streetControl: false
-		};
+		var controls = {};
+		if(typeof dataOptions.controls === 'undefined'){
+			controls = {
+				zoomControl: true,
+				panControl: true,
+				scaleControl: true,
+				mapTypeControl: true,
+				rotateControl: false,
+				streetViewControl: false,
+				overviewMapControl: false
+			}
+		}else{
+			var initControls = dataOptions.controls.split(',');
+			for(control in initControls){
+				if(initControls[control] === 'type'){
+					initControls[control] = 'mapType';
+				}else if(initControls[control] === 'street'){
+					initControls[control] = 'streetView';
+				}else if(initControls[control] === 'overview'){
+					initControls[control] = 'overviewMap';
+				}
+				controls[initControls[control]+'Control'] = true;
+			}
+		}
 			  
 		var defaults = {
 		  width: 400,
@@ -23,14 +43,21 @@
 		  icon: 'http://isite.dev.allegranet.com/Portals/_default/Skins/Allegra_Default/images/map_logo.png'
 		};
 
-		var options = $.extend(true, defaults, options, $(this).data());
+		var options = $.extend(true, defaults, options, dataOptions);
 	  
 	    var mapOptions = {
 			zoom: options.zoom,
-			mapTypeId: mapTypes[options.type]
+			mapTypeId: mapTypes[options.type],
+			zoomControl: false,
+			panControl: false,
+			scaleControl: false,
+			mapTypeControl: false,
+			streetViewControl: false,
+			rotateControl: false,
+			overviewMapControl: false
 	    };
 		
-		
+		$.extend(mapOptions, controls);
 	  
 		var geocoder = new google.maps.Geocoder();
 		var map = new google.maps.Map($('#'+options.mapid)[0], mapOptions);
