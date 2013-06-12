@@ -7,10 +7,15 @@ List of data attributes for map wrapper
 	<div class="gmapper"></div>
 		
 data-mapid:    ID of the map			
-data-type:     Type of map Value: (ROADMAP/SATELLITE/HYBRID/TERRAIN)				
+
+data-type:     Type of map Value: (ROADMAP/SATELLITE/HYBRID/TERRAIN)		
+		
 data-zoom:     Zoom Value: (1-16)				
+
 data-width:    Width of the map Value: (Number only, don't add px)
+
 data-height:   Height of the map Value: (Number only, don't add px)
+
 data-controls: Controls to add to the map Value: (separated by commas: pan,zoom,scale,street
 
 List of data attributes for map markers
