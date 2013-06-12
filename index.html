@@ -76,7 +76,7 @@
 			</pre>
 		</div>
 		
-		<div class="gmapper" data-mapid="detroit" data-type="TERRAIN" data-zoom="11" data-width="800" data-height="500" data-controls="pan,zoom,scale,street">
+		<div class="gmapper" data-mapid="detroit" data-type="ROADMAP" data-zoom="11" data-width="800" data-height="500" data-controls="pan,zoom,scale,street">
 			<div id="detroit"></div>
 			<span class="marker" data-address="Livonia, MI 48152">
                 <h2>Livonia!</h2>
@@ -97,11 +97,9 @@
 	<script type="text/javascript"  src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 	<script type="text/javascript"  src="js/gMapper.jquery.js"></script>
 	<script type="text/javascript">
-	(function(){
 		$(function(){
 			$('.gmapper').gMapper();
-		})
-	})(jQuery);
+		});
 	</script>
 </body>
 </html>
