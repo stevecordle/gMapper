@@ -7,28 +7,101 @@
 		width:400px;
 		height: 300px;
 		margin: 100px auto;
+		border-radius:10px;
+		border:solid 20px #446;
+		overflow:hidden;
+	}
+	
+	.gmapper .marker{
+		display:none;
+	}
+	.panel{
+		background:#eee;
+		border:solid 1px #346a76;
+		padding:10px;
+		border-radius: 3px;
+		margin:20px auto;
+		width:800px;
+	}
+	p{
+		padding:3px;
+		margin:3px 0;
+	}
+	h1,h2,h3,h4{
+		margin:3px 0;
+	}
+	ul{
+		list-style:none;
+		margin:0;
+		padding-left:15px;
+		line-height:7px;
+	}
+	ul li{
+		margin:0;
+		padding:0;
+	}
+	pre{
+		margin:0;padding:0;
 	}
 	</style>
 </head>
 <body>
 	<div id="content">	
-		<div class="gmapper" data-mapid="gmap_id_1" data-type="TERRAIN" data-zoom="10" data-width="800" data-height="500">
-			<div id="gmap_id_1"></div>
-			<span class="marker" data-address="Ann Arbor MI" data-icon="">Tooltip content 3</span>
-			<span class="marker" data-address="Detroit, MI" data-icon="">Tooltip content</span>
-			<span class="marker" data-address="Livonia MI" data-icon="">Tooltip content 2</span>
+		<div class="panel">
+			<h3>List of data attributes for map wrapper</h3>
+			<p>&lt;div class="mapper"&gt;&lt;/div&gt;</p>
+			<pre>
+				<ul>
+					<li>data-mapid:    ID of the map</li>
+					<li>data-type:     Type of map Value: (ROADMAP/SATELLITE/HYBRID/TERRAIN)</li>
+					<li>data-zoom:     Zoom Value: (1-16)</li>
+					<li>data-width:    Width of the map Value: (Number only, don't add px)</li>
+					<li>data-height:   Height of the map Value: (Number only, don't add px)</li>
+					<li>data-controls: Controls to add to the map Value: (separated by commas: pan,zoom,scale,street</li>
+				</ul>
+			</pre>
+		</div>	
+		<div class="panel">
+			<h3>List of data attributes for map markers</h3>
+			<p>&lt;span class="marker"&gt;&lt;/span&gt;</p>
+			<p>You must add class="marker" to each marker element, elements can be anything (div/span/p/etc).</p>
+			<pre>
+				<ul>
+					<li>data-address:    Address for the marker Value: (Address)</li>
+					<li>data-icon:       Icon to use for the marker Value: (url of image)</li>
+					<li>data-center:     Center the map on this marker (Only choose one marker to center on) Value: true</li>
+					<li>data-width:      Width of the map (Number only, don't add px)</li>
+					<li>Inside the span: Will show in the info window that pops up after clicking on the marker (Can use HTML)</li>
+				</ul>
+			</pre>
 		</div>
+		
+		<div class="gmapper" data-mapid="detroit" data-type="TERRAIN" data-zoom="11" data-width="800" data-height="500" data-controls="pan,zoom,scale,street">
+			<div id="detroit"></div>
+			<span class="marker" data-address="Livonia, MI 48152">
+                <h2>Livonia!</h2>
+                <p>This is the <strong>FIRST</strong> tooltip! Enjoy!</p>
+            </span>
+			<span class="marker" data-address="Detroit, MI" data-center="true">
+                <h2>Detroit!</h2>
+                <p>Home of the <span style="color:orange;">Tigers</span>, <span style="color:red;">Red Wings</span>, <span style="color:darkblue;">Pistons</span> and <span style="color:silver;">Lions!</span></p>
+            </span>
+			<span class="marker" data-address="Garden City, MI">
+                <h2>Garden City!</h2>
+                <p>This is the <strong>THIRD</strong> tooltip! Enjoy!</p>
+            </span>
+		</div>
+		
 	</div>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore.js"></script>
-<script src="js/gMapper.jquery.js"></script>
-<script type="text/javascript">
-(function($){
-
-    $('.gmapper').gMapper();
-    
-})(jQuery);
-</script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<script type="text/javascript"  src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	<script type="text/javascript"  src="js/gMapper.jquery.js"></script>
+	<script type="text/javascript">
+	(function(){
+		$(function(){
+			$('.gmapper').gMapper();
+		})
+	})(jQuery);
+	</script>
 </body>
 </html>
