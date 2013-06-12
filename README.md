@@ -3,7 +3,8 @@ jQuery Plugin for Google Maps: gMapper
 
 List of data attributes for map wrapper
 ----------------
-<div class="mapper"></div>
+
+	<div class="mapper"></div>
 		
 data-mapid:    ID of the map			
 data-type:     Type of map Value: (ROADMAP/SATELLITE/HYBRID/TERRAIN)				
@@ -14,7 +15,8 @@ data-controls: Controls to add to the map Value: (separated by commas: pan,zoom,
 
 List of data attributes for map markers
 ------------
-<span class="marker"></span>
+
+	<span class="marker"></span>
 
 You must add class="marker" to each marker element, elements can be anything (div/span/p/etc).
 
