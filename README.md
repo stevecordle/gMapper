@@ -4,7 +4,7 @@ jQuery Plugin for Google Maps: gMapper
 List of data attributes for map wrapper
 ----------------
 
-	<div class="mapper"></div>
+	<div class="gmapper"></div>
 		
 data-mapid:    ID of the map			
 data-type:     Type of map Value: (ROADMAP/SATELLITE/HYBRID/TERRAIN)				
