@@ -1,13 +1,18 @@
 ;(function($) {
 	$.fn.gMapper = function(options) {
-
-		var instance = 1;
 		
 		var mapTypes = {
 			"ROADMAP": google.maps.MapTypeId.ROADMAP,
 			"SATELLITE": google.maps.MapTypeId.SATELLITE,
 			"HYBRID": google.maps.MapTypeId.HYBRID,
 			"TERRAIN": google.maps.MapTypeId.TERRAIN
+		};
+		
+		var controls = {
+			panControl: true,
+			zoomControl: true,
+			scaleControl: true,
+			streetControl: false
 		};
 			  
 		var defaults = {
@@ -24,6 +29,8 @@
 			zoom: options.zoom,
 			mapTypeId: mapTypes[options.type]
 	    };
+		
+		
 	  
 		var geocoder = new google.maps.Geocoder();
 		var map = new google.maps.Map($('#'+options.mapid)[0], mapOptions);
@@ -34,11 +41,15 @@
 				if(status == google.maps.GeocoderStatus.OK){
 					addresses.push(location);
 				}else{
-					console.log('broken: '+status);
+					showError(status);
 				}
 				if(callback)
 					callback(location);
 			});
+		}
+		
+		var showError = function(error){
+			alert('gMapper Error: '+error);
 		}
 		
 		var addMarker = function(data){
@@ -54,7 +65,7 @@
                     if(data.center === true)
 						map.setCenter(loc);
 				}else{
-					console.log('broken: '+status);
+					showError(status);
 				}
 			});
 		}
